@@ -1,7 +1,6 @@
 package pro.gorodnyuk.bookingfriends.service;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pro.gorodnyuk.bookingfriends.api.BookingFriendsRequest;
@@ -18,7 +17,7 @@ public class CertificateReceiverImpl implements CertificateReceiver {
     }
 
     @Override
-    public InputStreamResource reserve(BookingFriendsRequest request) {
-        return restTemplate.postForObject(uri, request, InputStreamResource.class);
+    public byte[] reserve(BookingFriendsRequest request) {
+        return restTemplate.postForObject(uri, request, byte[].class);
     }
 }

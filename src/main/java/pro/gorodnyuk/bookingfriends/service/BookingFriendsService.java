@@ -5,6 +5,8 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import pro.gorodnyuk.bookingfriends.api.BookingFriendsRequest;
 
+import java.io.ByteArrayInputStream;
+
 @Service
 @RequiredArgsConstructor
 public class BookingFriendsService {
@@ -12,6 +14,8 @@ public class BookingFriendsService {
     private final CertificateReceiver certificateReceiver;
 
     public InputStreamResource reserve(BookingFriendsRequest request) {
-        return certificateReceiver.reserve(request);
+        return new InputStreamResource(
+                new ByteArrayInputStream(certificateReceiver.reserve(request))
+        );
     }
 }
