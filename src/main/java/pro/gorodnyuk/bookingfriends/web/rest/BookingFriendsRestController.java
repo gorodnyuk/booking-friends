@@ -1,4 +1,4 @@
-package pro.gorodnyuk.bookingfriends.api;
+package pro.gorodnyuk.bookingfriends.web.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.gorodnyuk.bookingfriends.service.BookingFriendsService;
+import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 
 import javax.validation.Valid;
 

@@ -3,7 +3,7 @@ package pro.gorodnyuk.bookingfriends.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pro.gorodnyuk.bookingfriends.api.BookingFriendsRequest;
+import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 
 @Component
 public class CertificateReceiverImpl implements CertificateReceiver {

@@ -3,7 +3,7 @@ package pro.gorodnyuk.bookingfriends.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
-import pro.gorodnyuk.bookingfriends.api.BookingFriendsRequest;
+import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 
 import java.io.ByteArrayInputStream;
 

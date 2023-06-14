@@ -1,4 +1,4 @@
-package pro.gorodnyuk.bookingfriends.api;
+package pro.gorodnyuk.bookingfriends.web;
 
 import lombok.Data;
 

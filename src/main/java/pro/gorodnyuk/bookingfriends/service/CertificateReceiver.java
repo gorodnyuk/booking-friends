@@ -1,6 +1,6 @@
 package pro.gorodnyuk.bookingfriends.service;
 
-import pro.gorodnyuk.bookingfriends.api.BookingFriendsRequest;
+import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 
 public interface CertificateReceiver {
 
