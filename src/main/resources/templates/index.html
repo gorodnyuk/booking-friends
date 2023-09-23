@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -37,7 +37,12 @@
         <h3 align="center">Нужно просто воспользоваться сервисом по бронированию друзей с выдачей сертификата!</h3>
         <p>Просто заполни таблицу и скачай сертификат!</p>
 
-        **********тут таблица**********
+        <form action="#" th:action="@{/}" th:object="${request}" method="post">
+            <p>Фамилия: <input type="text" th:field="*{bookingPerson.lastName}"/></p>
+            <p>Имя: <input type="text" th:field="*{bookingPerson.firstName}"/></p>
+            <p>Отчество: <input type="text" th:field="*{bookingPerson.middleName}"/></p>
+            <p><input type="submit" value="Скачать сертификат"/></p>
+        </form>
 
         <p>Не хочешь пользоваться сайтом? Воспользуйся API: GET
             http://booking-friends.ru/api/v1/booking-friends/reserve</p>
