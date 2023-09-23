@@ -14,7 +14,7 @@ public class BookingFriendsController {
 
     @GetMapping("/")
     public String index() {
-        throw new RuntimeException("Not implemented yet");
+        return "index";
     }
 
     @PostMapping("/")
