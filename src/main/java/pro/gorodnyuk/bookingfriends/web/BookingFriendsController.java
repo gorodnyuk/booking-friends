@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pro.gorodnyuk.bookingfriends.service.BookingFriendsService;
 
+import javax.validation.Valid;
+
 @Controller
 @RequiredArgsConstructor
 public class BookingFriendsController {
@@ -20,7 +22,7 @@ public class BookingFriendsController {
     }
 
     @PostMapping("/")
-    public String downloadCertificate(BookingFriendsRequest request) {
+    public String downloadCertificate(@Valid BookingFriendsRequest request) {
         service.reserve(request);
         return "redirect:/";
     }
