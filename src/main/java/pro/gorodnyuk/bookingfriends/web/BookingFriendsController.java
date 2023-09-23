@@ -17,7 +17,7 @@ public class BookingFriendsController {
         throw new RuntimeException("Not implemented yet");
     }
 
-    @PostMapping("/reserve")
+    @PostMapping("/")
     public String downloadCertificate() {
         throw new RuntimeException("Not implemented yet");
     }
