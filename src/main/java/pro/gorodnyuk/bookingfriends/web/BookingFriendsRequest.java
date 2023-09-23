@@ -1,6 +1,7 @@
 package pro.gorodnyuk.bookingfriends.web;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +16,7 @@ public class BookingFriendsRequest {
     private BookingPerson bookingPerson;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate bookingDate;
 
     @Data
