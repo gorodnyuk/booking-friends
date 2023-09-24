@@ -2,15 +2,12 @@ package pro.gorodnyuk.bookingfriends.web;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import pro.gorodnyuk.bookingfriends.service.BookingFriendsService;
+import pro.gorodnyuk.bookingfriends.service.PdfReportResponseGenerator;
 
 import javax.validation.Valid;
 
@@ -18,7 +15,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class BookingFriendsController {
 
-    private final BookingFriendsService service;
+    private final PdfReportResponseGenerator pdfReportResponseGenerator;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -28,13 +25,6 @@ public class BookingFriendsController {
 
     @PostMapping("/")
     public ResponseEntity<InputStreamResource> downloadCertificate(@Valid BookingFriendsRequest request) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentDisposition(ContentDisposition.builder("attachment")
-                .filename("booking-certificate.pdf")
-                .build());
-        return ResponseEntity.ok()
-                .headers(headers)
-                .contentType(MediaType.APPLICATION_PDF)
-                .body(service.reserve(request));
+        return pdfReportResponseGenerator.generateResponse(request);
     }
 }
