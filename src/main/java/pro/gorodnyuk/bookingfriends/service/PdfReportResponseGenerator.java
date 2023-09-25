@@ -13,16 +13,22 @@ import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 @RequiredArgsConstructor
 public class PdfReportResponseGenerator {
 
-    private final BookingFriendsService service;
+    private final BookingFriendsService bookingFriendsService;
+    private final TransliterationService transliterationService;
 
     public ResponseEntity<InputStreamResource> generateResponse(BookingFriendsRequest request) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentDisposition(ContentDisposition.builder("attachment")
-                .filename("booking-certificate.pdf")
+                .filename(transliterateName(request.getBookingPerson()) + "-booking-certificate.pdf")
                 .build());
         return ResponseEntity.ok()
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_PDF)
-                .body(service.reserve(request));
+                .body(bookingFriendsService.reserve(request));
+    }
+
+    private String transliterateName(BookingFriendsRequest.BookingPerson bookingPerson) {
+        return transliterationService
+                .transliterate("%s-%s-%s".formatted(bookingPerson.getLastName(), bookingPerson.getFirstName(), bookingPerson.getMiddleName()));
     }
 }
