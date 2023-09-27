@@ -29,6 +29,6 @@ public class PdfReportResponseGenerator {
 
     private String transliterateName(BookingFriendsRequest.BookingPerson bookingPerson) {
         return transliterationService
-                .transliterate("%s-%s-%s".formatted(bookingPerson.getLastName(), bookingPerson.getFirstName(), bookingPerson.getMiddleName()));
+                .transliterate("%s-%s-%s".formatted(bookingPerson.getLastName(), bookingPerson.getFirstName(), bookingPerson.getMiddleName())).toLowerCase();
     }
 }
