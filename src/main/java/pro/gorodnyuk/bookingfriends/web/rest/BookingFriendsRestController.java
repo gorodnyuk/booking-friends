@@ -13,7 +13,7 @@ import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/booking-friends")
+@RequestMapping("/api/booking-friends")
 @RequiredArgsConstructor
 public class BookingFriendsRestController {
 
