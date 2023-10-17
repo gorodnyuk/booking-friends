@@ -1,3 +1,6 @@
+server:
+  port: 80
+
 external:
   certificate-generator:
-    uri: http://localhost:8081
+    uri: http://localhost:8090
