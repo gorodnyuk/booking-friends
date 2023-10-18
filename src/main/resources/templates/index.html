@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="Сервис по бронированию друзей">
     <meta name="keywords"
-          content="друзья, бронь, бронирование, бронирование друзей, на выходные, weekend, на, выходные, пиво, шашлыки, бухло, бухать, api, апи">
+          content="друзья, бронь, бронирование, бронирование друзей, на выходные, weekend, на, выходные, пиво, шашлыки, бухло, бухать, api, апи, booking, friends, friend">
     <meta name="author" content="Sergey Gorodnyuk (https://github.com/gorodnyuk)">
 
     <title>Сервис по бронированию друзей</title>
@@ -21,32 +21,45 @@
 </head>
 
 <body>
-<div class="container">
-    <h1 align="center">Сервис по бронированию друзей</h1>
+<div class="container" align="center">
+    <h1>Сервис по бронированию друзей</h1>
     <hr>
-    <div align="center">
-        <p>Сервис по бронированию друзей - это уникальный в своем роде ресурс по бронированию друзей на выходные (и не
-            только)!</p>
+    <div>
+        <p><b>Сервис по бронированию друзей</b> - это уникальный в своем роде ресурс по бронированию друзей на выходные
+            (и не только)!</p>
         <p>Представьте себе следующую картину: пятница, вечер, впереди выходные, самое время расслабиться в баре со
-            стаканчиком свежего, холодного пива... Ммм... мечта... А вашего друга не отпускает жена (подруга, мать;
+            стаканчиком свежего, холодного пива... Ммм... мечта... А вашего друга не отпускает жена (подруга, мать -
             подчеркните нужное)! </p>
         <p>Или он едет копать картошку на дачу.</p>
         <p>Или он договорился с кем-то другим, но пруфов не предоставил!</p>
         <p>Или ему просто лень...</p>
-        <h2 align="center">Что же делать? Теперь он точно не отвертится!</h2>
-        <h3 align="center">Нужно просто воспользоваться сервисом по бронированию друзей с выдачей сертификата!</h3>
-        <p>Просто заполни таблицу и скачай сертификат!</p>
-
-        <form action="#" th:action="@{/}" th:object="${request}" method="post">
-            <p>Фамилия: <input type="text" th:field="*{bookingPerson.lastName}"/></p>
-            <p>Имя: <input type="text" th:field="*{bookingPerson.firstName}"/></p>
-            <p>Отчество: <input type="text" th:field="*{bookingPerson.middleName}"/></p>
-            <p>День бронирования: <input type="date" th:field="*{bookingDate}"/></p>
-            <p><input type="submit" value="Скачать сертификат"/></p>
-        </form>
-
-        <p>Не хочешь пользоваться сайтом? Воспользуйся API: POST
-            http://booking-friends.ru/api/booking-friends/reserve</p>
+        <h2>Что же делать? Теперь он точно не отвертится!</h2>
+        <h3>Нужно просто воспользоваться сервисом по бронированию друзей с выдачей сертификата!</h3>
+        <p><u>Просто заполни таблицу и скачай сертификат!</u></p>
+        <table border="1" cellpadding="5" style="border-collapse:collapse;">
+            <tr>
+                <td>
+                    <form action="#" th:action="@{/}" th:object="${request}" method="post">
+                        <div style="text-align: right;">
+                            <p>Фамилия: <input type="text" size="50" th:field="*{bookingPerson.lastName}"/></p>
+                            <p>Имя: <input type="text" size="50" th:field="*{bookingPerson.firstName}"/></p>
+                            <p>Отчество: <input type="text" size="50" th:field="*{bookingPerson.middleName}"/></p>
+                        </div>
+                        <p>День бронирования: <input type="date" th:field="*{bookingDate}"/></p>
+                        <div style="text-align: center;">
+                            <p><input type="submit" value="Скачать сертификат"/></p>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <p>Не хочешь пользоваться сайтом? Воспользуйся API: <a href="">[ДОКУМЕНТАЦИЯ]</a></p>
+    </div>
+    <div>
+        <hr>
+        <font size="2">
+            <p>Разработчик: [<a href="http://gorodnyuk.ru" target="_blank">LINK</a>]</p>
+        </font>
     </div>
 </div>
 </body>
