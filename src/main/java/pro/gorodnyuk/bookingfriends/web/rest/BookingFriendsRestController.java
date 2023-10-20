@@ -1,7 +1,6 @@
 package pro.gorodnyuk.bookingfriends.web.rest;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +19,7 @@ public class BookingFriendsRestController {
     private final PdfReportResponseGenerator pdfReportResponseGenerator;
 
     @PostMapping("/reserve")
-    public ResponseEntity<InputStreamResource> reserve(@Valid @RequestBody BookingFriendsRequest request) {
+    public ResponseEntity<byte[]> reserve(@Valid @RequestBody BookingFriendsRequest request) {
         return pdfReportResponseGenerator.generateResponse(request);
     }
 }

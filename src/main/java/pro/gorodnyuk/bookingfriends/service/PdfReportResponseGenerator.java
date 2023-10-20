@@ -1,12 +1,12 @@
 package pro.gorodnyuk.bookingfriends.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import pro.gorodnyuk.bookingfriends.dto.Certificate;
 import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 
 @Component
@@ -14,21 +14,16 @@ import pro.gorodnyuk.bookingfriends.web.BookingFriendsRequest;
 public class PdfReportResponseGenerator {
 
     private final BookingFriendsService bookingFriendsService;
-    private final TransliterationService transliterationService;
 
-    public ResponseEntity<InputStreamResource> generateResponse(BookingFriendsRequest request) {
+    public ResponseEntity<byte[]> generateResponse(BookingFriendsRequest request) {
+        Certificate certificate = bookingFriendsService.reserve(request);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentDisposition(ContentDisposition.builder("attachment")
-                .filename(transliterateName(request.getBookingPerson()) + "-booking-certificate.pdf")
+                .filename(certificate.name())
                 .build());
         return ResponseEntity.ok()
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_PDF)
-                .body(bookingFriendsService.reserve(request));
-    }
-
-    private String transliterateName(BookingFriendsRequest.BookingPerson bookingPerson) {
-        return transliterationService
-                .transliterate("%s-%s-%s".formatted(bookingPerson.getLastName(), bookingPerson.getFirstName(), bookingPerson.getMiddleName())).toLowerCase();
+                .body(certificate.content());
     }
 }

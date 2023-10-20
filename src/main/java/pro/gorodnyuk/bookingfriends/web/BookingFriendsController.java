@@ -1,7 +1,6 @@
 package pro.gorodnyuk.bookingfriends.web;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,7 @@ public class BookingFriendsController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<InputStreamResource> downloadCertificate(@Valid BookingFriendsRequest request) {
+    public ResponseEntity<byte[]> downloadCertificate(@Valid BookingFriendsRequest request) {
         return pdfReportResponseGenerator.generateResponse(request);
     }
 }
