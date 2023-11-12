@@ -41,11 +41,14 @@
                 <td>
                     <form action="#" th:action="@{/}" th:object="${request}" method="post">
                         <div style="text-align: right;">
-                            <p>Фамилия: <input type="text" size="50" th:field="*{bookingPerson.lastName}"/></p>
-                            <p>Имя: <input type="text" size="50" th:field="*{bookingPerson.firstName}"/></p>
-                            <p>Отчество: <input type="text" size="50" th:field="*{bookingPerson.middleName}"/></p>
+                            <p>Фамилия: <input type="text" size="50" th:field="*{bookingPerson.lastName}" required
+                                               placeholder="Фамилия бронируемого лица"/></p>
+                            <p>Имя: <input type="text" size="50" th:field="*{bookingPerson.firstName}" required
+                                           placeholder="Имя бронируемого лица"/></p>
+                            <p>Отчество: <input type="text" size="50" th:field="*{bookingPerson.middleName}"
+                                                placeholder="Отчество бронируемого лица (при наличии)"/></p>
                         </div>
-                        <p>День бронирования: <input type="date" th:field="*{bookingDate}"/></p>
+                        <p>День бронирования: <input type="date" th:field="*{bookingDate}" required/></p>
                         <div style="text-align: center;">
                             <p><input type="submit" value="Скачать сертификат"/></p>
                         </div>

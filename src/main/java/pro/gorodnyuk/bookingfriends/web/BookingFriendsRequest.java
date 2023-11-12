@@ -33,7 +33,6 @@ public class BookingFriendsRequest {
         @Schema(description = "Имя бронируемого друга", example = "Иван")
         private String firstName;
 
-        @NotBlank
         @Schema(description = "Отчество бронируемого друга", example = "Иванович")
         private String middleName;
     }
