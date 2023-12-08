@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1-create-table-statements" author="Sergey Gorodnyuk">
+
+        <createTable tableName="statements">
+
+            <column name="id"
+                    type="bigint"
+                    remarks="Идентификатор">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="pk_statements"/>
+            </column>
+
+            <column name="value_ru"
+                    type="varchar(5000)"
+                    remarks="Высказывание Невского на русском языке">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="value_en"
+                    type="varchar(5000)"
+                    remarks="Высказывание Невского на английском языке">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addAutoIncrement tableName="statements" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"/>
+
+    </changeSet>
+
+</databaseChangeLog>
