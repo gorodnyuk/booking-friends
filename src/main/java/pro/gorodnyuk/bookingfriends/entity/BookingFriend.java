@@ -1,6 +1,6 @@
 package pro.gorodnyuk.bookingfriends.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
-@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "person")
 public class BookingFriend {
