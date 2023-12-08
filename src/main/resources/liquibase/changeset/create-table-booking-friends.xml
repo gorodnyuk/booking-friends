@@ -5,9 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="1-create-table-statements" author="Sergey Gorodnyuk">
+    <changeSet id="create-table-booking-friends" author="Sergey Gorodnyuk">
 
-        <createTable tableName="statements">
+        <createTable tableName="booking_friends">
 
             <column name="id"
                     type="bigint"
@@ -15,24 +15,35 @@
                 <constraints nullable="false"
                              unique="true"
                              primaryKey="true"
-                             primaryKeyName="pk_statements"/>
+                             primaryKeyName="pk_booking_friends"/>
             </column>
 
-            <column name="value_ru"
-                    type="varchar(5000)"
-                    remarks="Высказывание Невского на русском языке">
+            <column name="first_name"
+                    type="varchar(255)"
+                    remarks="Имя бронируемого друга">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="value_en"
-                    type="varchar(5000)"
-                    remarks="Высказывание Невского на английском языке">
+            <column name="last_name"
+                    type="varchar(255)"
+                    remarks="Фамилия бронируемого друга">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="middle_name"
+                    type="varchar(255)"
+                    remarks="Отчество бронируемого друга"/>
+
+            <column name="booking_date"
+                    type="date"
+                    remarks="Дата бронирования">
                 <constraints nullable="false"/>
             </column>
 
         </createTable>
 
-        <addAutoIncrement tableName="statements" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"/>
+        <addAutoIncrement tableName="booking_friends" columnName="id" columnDataType="bigint" startWith="1"
+                          incrementBy="1"/>
 
     </changeSet>
 
