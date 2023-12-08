@@ -17,6 +17,7 @@ public class PdfReportResponseGenerator {
 
     public ResponseEntity<byte[]> generateResponse(BookingFriendsRequest request) {
         Certificate certificate = bookingFriendsService.reserve(request);
+        //todo add db
         HttpHeaders headers = new HttpHeaders();
         headers.setContentDisposition(ContentDisposition.builder("attachment")
                 .filename(certificate.name())
