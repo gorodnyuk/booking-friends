@@ -30,4 +30,7 @@ public class BookingFriends {
 
     @Column(name = "booking_date", nullable = false)
     private LocalDate bookingDate;
+
+    @Column(name = "creation_date", nullable = false)
+    private LocalDate creationDate;
 }
