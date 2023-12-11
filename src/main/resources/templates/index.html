@@ -48,7 +48,9 @@
                             <p>Отчество: <input type="text" size="50" th:field="*{bookingPerson.middleName}"
                                                 placeholder="Отчество бронируемого лица (при наличии)"/></p>
                         </div>
-                        <p>День бронирования: <input type="date" th:field="*{bookingDate}" required/></p>
+                        <p>День бронирования: <input type="date" th:field="*{bookingDate}"
+                                                     onfocus="this.min=new Date().toISOString().split('T')[0]"
+                                                     required/></p>
                         <div style="text-align: center;">
                             <p><input type="submit" value="Скачать сертификат"/></p>
                         </div>
