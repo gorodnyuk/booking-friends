@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.util.StringUtils;
+import pro.gorodnyuk.bookingfriends.common.constraint.TodayOrFuture;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -14,11 +15,12 @@ import java.time.LocalDate;
 public class BookingFriendsRequest {
 
     @Valid
-    @NotNull
+    @NotNull(message = "Booking person must be present")
     @Schema(description = "Бронируемый друг")
     private BookingPerson bookingPerson;
 
-    @NotNull
+    @NotNull(message = "Booking date must be present")
+    @TodayOrFuture(message = "Booking date must be today or future")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Schema(description = "На какую дату сгенерировать сертификат", example = "2023-10-10")
     private LocalDate bookingDate;
@@ -26,11 +28,11 @@ public class BookingFriendsRequest {
     @Data
     public static class BookingPerson {
 
-        @NotBlank
+        @NotBlank(message = "Last name must be present")
         @Schema(description = "Фамилия бронируемого друга", example = "Иванов")
         private String lastName;
 
-        @NotBlank
+        @NotBlank(message = "First name must be present")
         @Schema(description = "Имя бронируемого друга", example = "Иван")
         private String firstName;
 
